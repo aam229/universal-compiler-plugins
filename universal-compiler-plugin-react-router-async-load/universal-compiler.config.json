@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "compile": "./lib/uc-hooks/compile",
+    "server": "./lib/uc-hooks/server"
+  }
+}

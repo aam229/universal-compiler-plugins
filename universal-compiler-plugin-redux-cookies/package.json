@@ -1,0 +1,48 @@
+{
+  "name": "universal-compiler-plugin-redux-cookies",
+  "description": "A plugin to access cookies with universal-reux",
+  "author": "Alexandre Massonneau <aam229@cornell.edu> (http://github.com/aam229)",
+  "license": "MIT",
+  "version": "1.0.0-alpha1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aam229/universal-compiler-plugins"
+  },
+  "homepage": "https://github.com/aam229/universal-compiler-plugins",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src/ --out-dir lib/",
+    "lint": "eslint --ext=js --ext=jsx -c .eslintrc src config",
+    "fix-lint": "eslint --ext=js --ext=jsx --fix -c .eslintrc src config",
+    "prepublish": "npm run lint && npm run compile"
+  },
+  "dependencies": {
+    "babel-runtime": "6.23.0",
+    "js-cookie": "2.1.4"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-loader": "7.0.0",
+    "babel-plugin-react-transform": "2.0.2",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-jsx-a11y": "5.0.3",
+    "eslint-plugin-react": "7.0.1"
+  },
+  "peerDependencies": {
+    "universal-compiler": "*",
+    "universal-compiler-plugin-redux": "*"
+  },
+  "engines": {
+    "node": ">=4.1.1",
+    "npm": ">=3.3.12"
+  },
+  "bugs": {
+    "url": "https://github.com/aam229/universal-compiler-plugins"
+  }
+}

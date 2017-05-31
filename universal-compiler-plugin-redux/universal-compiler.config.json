@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "compile": "./lib/uc-hooks/compile",
+    "client": ["./lib/uc-hooks/client", "./lib/uc-hooks/universal"],
+    "server": ["./lib/uc-hooks/server", "./lib/uc-hooks/universal"]
+  }
+}

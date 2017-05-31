@@ -1,0 +1,27 @@
+{
+  "extends": "eslint-config-airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "import/extensions": ["off"],
+    "import/no-extraneous-dependencies": ["warn"],
+    "import/no-unresolved": ["warn"],
+    "no-console": ["warn"],
+    "no-param-reassign": ["off"],
+    "no-use-before-define": ["off"]
+  },
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": ["node_modules", "src"]
+    }
+  },
+  "globals": {}
+}
