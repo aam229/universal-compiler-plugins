@@ -1,9 +1,15 @@
 {
+  "passPerPreset": true,
   "presets": [
-    "es2015",
-    "stage-0"
+    {
+      "plugins": [ "transform-runtime" ]
+    },
+    {
+      "passPerPreset": false,
+      "presets": [ "es2015", "stage-0" ]
+    }
   ],
-  "plugins": [ "transform-runtime" ],
+  "plugins": [],
   "env": {
     "development": {
       "plugins": []

@@ -22,9 +22,12 @@ export default class UserAgent extends React.Component {
 UserAgent.childContextTypes = {
   userAgent: PropTypes.string,
 };
+UserAgent.defaultProps = {
+  headers: {},
+};
 UserAgent.propTypes = {
   children: PropTypes.element.isRequired,
   headers: PropTypes.shape({
     'user-agent': PropTypes.string,
-  }).isRequired,
+  }),
 };

@@ -7,6 +7,7 @@ let ignoreNextLoad = !!applicationConfig.ssr;
 export const connect = loader => (WrappedComponent) => {
   WrappedComponent.load = loader;
   // We don't do any of this stuff on the server
+
   if (process.env.JS_ENV === 'server') {
     return WrappedComponent;
   }
