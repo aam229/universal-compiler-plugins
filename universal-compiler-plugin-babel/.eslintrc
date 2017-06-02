@@ -9,9 +9,11 @@
     "import/extensions": ["off"],
     "import/no-extraneous-dependencies": ["warn"],
     "import/no-unresolved": ["warn"],
-    "no-console": ["warn"]
+    "no-console": ["warn"],
+    "no-param-reassign": ["off"]
   },
   "plugins": [
+    "react",
     "import"
   ],
   "settings": {
@@ -19,5 +21,6 @@
     "import/resolve": {
       "moduleDirectory": ["node_modules", "src"]
     }
-  }
+  },
+  "globals": {}
 }

@@ -8,9 +8,6 @@ import {
 } from 'universal-compiler';
 
 register(hooks.COMPILER_CONFIG, (config) => {
-  if (!config.plugins.some(plugin => plugin.path.endsWith('universal-compiler-plugin-react'))) {
-    throw new Error('The universal-compiler-plugin-redux plugin depends on the universal-compiler-plugin-react which is not registered');
-  }
   if (typeof (config.redux) !== 'object') {
     throw new Error('The compiler config\'s redux property should be an object');
   }

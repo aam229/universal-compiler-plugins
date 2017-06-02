@@ -1,4 +1,5 @@
 {
+  "name": "babel",
   "hooks": {
     "server": "./lib/uc-hooks-server"
   }

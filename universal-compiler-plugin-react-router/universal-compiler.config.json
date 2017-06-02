@@ -1,7 +1,9 @@
 {
+  "name": "react-router",
   "hooks": {
     "compile": "./lib/uc-hooks/compile",
     "client": "./lib/uc-hooks/client",
     "server": "./lib/uc-hooks/server"
-  }
+  },
+  "dependencies": ["redux"]
 }

@@ -1,0 +1,6 @@
+{
+  "name": "babel",
+  "hooks": {
+    "compile": "./lib/uc-hooks/compile"
+  }
+}

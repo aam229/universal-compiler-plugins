@@ -12,12 +12,19 @@ export const connect = loader => (WrappedComponent) => {
     return WrappedComponent;
   }
   class AsyncConnect extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        loads: 0,
+      };
+    }
+
     componentWillMount() {
       if (ignoreNextLoad) {
         ignoreNextLoad = false;
         return;
       }
-      loader(this.context.store, this.props.match.params, null);
+      this.load(this.props.match.params, null);
     }
 
     componentWillReceiveProps(newProps) {
@@ -41,11 +48,18 @@ export const connect = loader => (WrappedComponent) => {
       if (prevLocation === nextLocation) {
         return;
       }
-      loader(this.context.store, nextParams, prevParams);
+      this.load(nextParams, prevParams);
+    }
+
+    load(nextParams, prevParams) {
+      this.setState({ loads: this.state.loads + 1 });
+      return loader(this.context.store, nextParams, prevParams)
+        .then(() => this.setState({ loads: this.state.loads - 1 }))
+        .catch(() => this.setState({ loads: this.state.loads - 1 }));
     }
 
     render() {
-      return <WrappedComponent {...this.props} />;
+      return <WrappedComponent {...this.props} isAsyncLoading={this.state.loads !== 0} />;
     }
   }
   const wrappedComponentName = WrappedComponent.displayName

@@ -19,12 +19,6 @@ register([hooks.COMPILER_CONFIG], (config) => {
     throw new Error(`The compiler config's reactRouter.routesPath file (${routesPath}) does not exist`);
   }
   config.reactRouter.routesPath = routesPath;
-  if (!config.plugins.some(plugin => plugin.path.endsWith('universal-compiler-plugin-react'))) {
-    throw new Error('The universal-compiler-plugin-react-router plugins depends on the universal-compiler-plugin-react which is not registered');
-  }
-  if (!config.plugins.some(plugin => plugin.path.endsWith('universal-compiler-plugin-redux'))) {
-    throw new Error('The universal-compiler-plugin-react-router plugins depends on the universal-compiler-plugin-redux which is not registered');
-  }
   // Overwrite the component path for the react plugin config
   // since the react-router takes care of rendering it
   config.react = {

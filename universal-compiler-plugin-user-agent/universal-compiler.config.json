@@ -1,7 +1,9 @@
 {
+  "name": "user-agent",
   "hooks": {
     "compile": "./lib/uc-hooks/compile",
     "client": "./lib/uc-hooks/universal",
     "server": "./lib/uc-hooks/universal"
-  }
+  },
+  "dependencies": ["react"]
 }

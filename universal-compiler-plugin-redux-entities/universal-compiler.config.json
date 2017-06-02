@@ -1,7 +1,8 @@
 {
+  "name": "redux-entities",
   "hooks": {
-    "compile": "./lib/uc-hooks/compile",
     "client": "./lib/uc-hooks/universal",
     "server": "./lib/uc-hooks/universal"
-  }
+  },
+  "dependencies": ["redux"]
 }

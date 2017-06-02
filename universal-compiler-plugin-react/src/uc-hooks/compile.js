@@ -24,25 +24,12 @@ register([hooks.COMPILER_CONFIG], (config) => {
 register(hooks.WEBPACK_CONFIG, (config) => {
   config.webpack.resolve.alias['application-react-component'] = config.compiler.react.componentPath;
   config.webpack.resolve.extensions.push('.jsx');
-  config.webpack.module.rules.push({
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    use: [{
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          'babel-preset-es2015',
-          'babel-preset-stage-0',
-          'babel-preset-react',
-        ],
-        plugins: [
-          ['babel-plugin-transform-runtime'],
-          ['babel-plugin-transform-decorators-legacy'],
-          ['babel-plugin-transform-async-to-generator'],
-        ],
-      },
-    }],
-  });
+  config.babel.test = /\.jsx?$/;
+  config.babel.options.presets.push(
+    'babel-preset-es2015',
+    'babel-preset-stage-0',
+    'babel-preset-react',
+  );
   return config;
 }, { position: positions.BEFORE, priority: 10000 });
 
