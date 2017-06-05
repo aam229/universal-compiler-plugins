@@ -1,7 +1,6 @@
 {
   "name": "redux-logger",
   "hooks": {
-    "compile": "./lib/uc-hooks/compile",
     "client": "./lib/uc-hooks/client"
   },
   "dependencies": ["redux"]

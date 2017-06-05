@@ -40,6 +40,9 @@ register(hooks.RENDER, promise => promise.then((params) => {
 }), { position: positions.BEFORE, environments: environments.SERVER, priority: 11000 });
 
 register(reactHooks.REACT_RENDER, (params) => {
+  if (!params.ssr) {
+    return;
+  }
   params.ApplicationComponent = (
     <Provider store={params.context.redux.store} key="provider">
       {params.ApplicationComponent}
