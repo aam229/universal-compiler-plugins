@@ -55,5 +55,4 @@ register(hooks.RENDER, promise => promise.then((params) => {
 }), {
   position: positions.BEFORE,
   environments: [environments.CLIENT, environments.DEVELOPMENT],
-  priority: 1000,
 });

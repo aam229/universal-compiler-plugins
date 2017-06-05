@@ -55,11 +55,19 @@ export const connect = loader => (WrappedComponent) => {
       this.setState({ loads: this.state.loads + 1 });
       return loader(this.context.store, nextParams, prevParams)
         .then(() => this.setState({ loads: this.state.loads - 1 }))
-        .catch(() => this.setState({ loads: this.state.loads - 1 }));
+        .catch((err) => {
+          if (process.env.NODE_ENV === 'development') {
+            console.error(err, err.stack);
+          }
+          this.setState({ loads: this.state.loads - 1 });
+        });
     }
 
     render() {
-      return <WrappedComponent {...this.props} isAsyncLoading={this.state.loads !== 0} />;
+      const {
+        loads,
+      } = this.state;
+      return <WrappedComponent {...this.props} isAsyncLoading={loads !== 0} />;
     }
   }
   const wrappedComponentName = WrappedComponent.displayName

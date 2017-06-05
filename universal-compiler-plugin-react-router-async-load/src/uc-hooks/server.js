@@ -25,4 +25,4 @@ register(hooks.RENDER, promise => promise.then((params) => {
       .filter(p => !!p);
   return Promise.all(promises)
       .then(() => params);
-}), { position: positions.BEFORE, environments: environments.SERVER, priority: 7000 });
+}), { position: positions.BEFORE, environments: environments.SERVER, priority: 10000 });

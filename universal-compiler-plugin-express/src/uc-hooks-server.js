@@ -42,11 +42,12 @@ register(hooks.SERVER_CREATE, ({ assets }) => {
   server.use((req, res) => {
     const params = {
       assets: relativeAssets,
-      context: {},
+      context: {
+        location: req.originalUrl,
+        headers: req.headers,
+        cookies: req.cookies,
+      },
       ssr: config.ssr,
-      location: req.originalUrl,
-      headers: req.headers,
-      cookies: req.cookies,
     };
     execute(hooks.RENDER, Promise.resolve(params))
       .then(({ status, body, redirect }) => {

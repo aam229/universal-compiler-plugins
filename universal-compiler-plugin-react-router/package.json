@@ -39,6 +39,7 @@
   },
   "peerDependencies": {
     "universal-compiler": "*",
+    "universal-compiler-plugin-react": "*",
     "universal-compiler-plugin-redux": "*",
     "webpack": "2.5.1"
   },

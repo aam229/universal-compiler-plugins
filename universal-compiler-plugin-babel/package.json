@@ -3,7 +3,7 @@
   "description": "A plugin to use react applications with the univeral-compiler ",
   "author": "Alexandre Massonneau <aam229@cornell.edu> (http://github.com/aam229)",
   "license": "MIT",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha3",
   "repository": {
     "type": "git",
     "url": "https://github.com/aam229/universal-compiler-plugins"
@@ -25,7 +25,6 @@
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
     "babel-preset-es2015": "6.24.1",
-    "babel-preset-stage-0": "6.24.1",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
     "eslint-plugin-import": "2.3.0",

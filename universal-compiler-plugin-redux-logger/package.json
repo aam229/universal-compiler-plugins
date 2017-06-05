@@ -3,7 +3,7 @@
   "description": "A plugin to use the redux-logger with universal-compiler",
   "author": "Alexandre Massonneau <aam229@cornell.edu> (http://github.com/aam229)",
   "license": "MIT",
-  "version": "1.0.0-alpha2",
+  "version": "1.0.0-alpha3",
   "repository": {
     "type": "git",
     "url": "https://github.com/aam229/universal-compiler-plugins"

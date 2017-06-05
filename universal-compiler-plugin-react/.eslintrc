@@ -9,6 +9,7 @@
     "import/extensions": ["off"],
     "import/no-extraneous-dependencies": ["warn"],
     "import/no-unresolved": ["warn"],
+    "import/prefer-default-export": ["warn"],
     "no-console": ["warn"],
     "no-param-reassign": ["off"]
   },

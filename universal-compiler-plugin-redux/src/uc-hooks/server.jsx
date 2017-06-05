@@ -12,39 +12,46 @@ import {
   positions,
   environments,
 } from 'universal-compiler';
-
+import {
+  hooks as reactHooks,
+} from 'universal-compiler-plugin-react';
 import {
   hooks as reduxHooks,
 } from '../hooks';
+import {
+  createStore,
+} from '../util';
 
 register(hooks.RENDER, promise => promise.then((params) => {
   if (!params.ssr) {
     return params;
   }
-  const store = execute(reduxHooks.REDUX_CREATE_STORE, {
+  const reduxParams = {
     data: {},
-    headers: params.headers,
-    cookies: params.cookies,
     reducers: { ...applicationReducers },
     middlewares: [...applicationMiddlewares],
     enhancers: [],
     context: params.context,
-  });
+  };
+  params.context.redux = {
+    store: execute(reduxHooks.REDUX_CREATE_STORE, reduxParams, createStore),
+  };
+  return params;
+}), { position: positions.BEFORE, environments: environments.SERVER, priority: 11000 });
+
+register(reactHooks.REACT_RENDER, (params) => {
   params.ApplicationComponent = (
-    <Provider store={store} key="provider">
+    <Provider store={params.context.redux.store} key="provider">
       {params.ApplicationComponent}
     </Provider>
-    );
-  params.context.redux = { store };
-  return params;
-}), { position: positions.BEFORE, environments: environments.SERVER, priority: 8000 });
+  );
+}, { position: positions.BEFORE, environments: environments.SERVER, priority: 9000 });
 
-register(hooks.RENDER, promise => promise.then((params) => {
+register(reactHooks.REACT_RENDER, (params) => {
   if (!params.ssr) {
-    return params;
+    return;
   }
   params.AdditionalComponents.body.before.push(
     <script dangerouslySetInnerHTML={{ __html: `window.ReduxStoreData=${serialize(params.context.redux.store.getState())};` }} charSet="UTF-8" />,
-    );
-  return params;
-}), { position: positions.BEFORE, environments: environments.SERVER, priority: -1 });
+  );
+}, { position: positions.BEFORE, environments: environments.SERVER, priority: -1 });

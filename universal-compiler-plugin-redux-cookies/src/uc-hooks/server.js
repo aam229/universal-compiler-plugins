@@ -15,5 +15,5 @@ import {
 } from './util';
 
 register(hooks.REDUX_CREATE_STORE, (params) => {
-  params.data[COOKIES_REDUCER] = createCookiesStore(params.cookies);
+  params.data[COOKIES_REDUCER] = createCookiesStore(params.context.cookies);
 }, { position: positions.BEFORE, environments: environments.SERVER });

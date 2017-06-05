@@ -1,17 +1,18 @@
 import React from 'react';
 import {
   register,
-  hooks,
   positions,
 } from 'universal-compiler';
+import {
+  hooks,
+} from 'universal-compiler-plugin-react';
 
 import UserAgent from '../UserAgent';
 
-register(hooks.RENDER, promise => promise.then((params) => {
+register(hooks.REACT_RENDER, (params) => {
   params.ApplicationComponent = (
-    <UserAgent headers={params.headers}>
+    <UserAgent headers={params.context.headers}>
       {params.ApplicationComponent}
     </UserAgent>
-    );
-  return params;
-}), { position: positions.BEFORE });
+  );
+}, { position: positions.BEFORE });
