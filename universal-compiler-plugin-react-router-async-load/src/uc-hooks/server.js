@@ -14,7 +14,7 @@ register(hooks.RENDER, promise => promise.then((params) => {
     return params;
   }
   const store = params.context.redux.store;
-  const locationRoutes = matchRoutes(routes, params.location);
+  const locationRoutes = matchRoutes(routes, params.context.location);
   const promises = locationRoutes
       .map(({ route, match }) => {
         if (typeof route.component.load !== 'function') {
