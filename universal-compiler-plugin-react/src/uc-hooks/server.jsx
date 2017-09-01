@@ -49,7 +49,7 @@ function renderPage(assets, ssr, params) {
         <div id="content" dangerouslySetInnerHTML={{ __html: content }} />
         { Object.keys(assets.javascript).map(jsAsset =>
           <script src={assets.javascript[jsAsset]} key={jsAsset} charSet="UTF-8" />,
-    )}
+        )}
         { AdditionalComponents.body.after }
       </body>
     </html>,
@@ -74,9 +74,6 @@ register(hooks.RENDER, promise => promise.then((params) => {
       },
     },
   };
-  const body = execute(reactHooks.REACT_RENDER, reactRenderParams, p => renderPage(assets, ssr, p));
-  return {
-    context,
-    body,
-  };
+  params.body = execute(reactHooks.REACT_RENDER, reactRenderParams, p => renderPage(assets, ssr, p));
+  return params;
 }), { environments: environments.SERVER });

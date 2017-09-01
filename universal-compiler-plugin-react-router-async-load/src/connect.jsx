@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import applicationConfig from 'application-runtime-config';
-
-let ignoreNextLoad = !!applicationConfig.ssr;
 
 export const connect = loader => (WrappedComponent) => {
   WrappedComponent.load = loader;
@@ -20,8 +17,7 @@ export const connect = loader => (WrappedComponent) => {
     }
 
     componentWillMount() {
-      if (ignoreNextLoad) {
-        ignoreNextLoad = false;
+      if (window.ucReactRouterAsyncLoad.skipFirstLoad) {
         return;
       }
       this.load(this.props.match.params, null);
@@ -29,10 +25,6 @@ export const connect = loader => (WrappedComponent) => {
 
     componentWillReceiveProps(newProps) {
       this.maybeLoadAsync(this.props, newProps);
-    }
-
-    componentDidUpdate(prevProps) {
-      this.maybeLoadAsync(prevProps, this.props);
     }
 
     maybeLoadAsync(prevProps, newProps) {

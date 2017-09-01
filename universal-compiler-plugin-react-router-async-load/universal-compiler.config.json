@@ -2,7 +2,8 @@
   "name": "react-router-async-load",
   "hooks": {
     "compile": "./lib/uc-hooks/compile",
-    "server": "./lib/uc-hooks/server"
+    "server": "./lib/uc-hooks/server",
+    "client": "./lib/uc-hooks/client"
   },
   "dependencies": ["react-router"]
 }
